@@ -1,0 +1,30 @@
+- name: skill
+  color: "1f6feb"
+  description: Changes to the skill contract, trigger logic, or workflow behavior.
+- name: plotting
+  color: "0e8a16"
+  description: Changes to plot families, rendering defaults, or plotting scripts.
+- name: examples
+  color: "5319e7"
+  description: Example datasets, scripts, or committed example outputs.
+- name: documentation
+  color: "0075ca"
+  description: README, references, or usage documentation updates.
+- name: ci
+  color: "fbca04"
+  description: GitHub Actions or automated validation updates.
+- name: tooling
+  color: "c2e0c6"
+  description: Local developer tooling, install scripts, or make targets.
+- name: maintenance
+  color: "d4c5f9"
+  description: Routine maintenance or repository housekeeping.
+- name: good first issue
+  color: "7057ff"
+  description: A small, self-contained task suitable for first-time contributors.
+- name: help wanted
+  color: "008672"
+  description: Extra contributor help is welcome.
+- name: skip-changelog
+  color: "b60205"
+  description: Exclude this PR from generated release notes.

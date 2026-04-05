@@ -54,6 +54,12 @@ figure-plot/
 ├── examples/
 │   ├── comparison_results.csv
 │   ├── generate_comparison_bar.py
+│   ├── training_curve_results.csv
+│   ├── generate_training_curve.py
+│   ├── ablation_results.csv
+│   ├── generate_ablation_bar.py
+│   ├── heatmap_results.csv
+│   ├── generate_hyperparam_heatmap.py
 │   └── output/
 │       ├── comparison_bar_example.png
 │       └── comparison_bar_example.pdf
@@ -78,6 +84,9 @@ figure-plot/
 - [references/troubleshooting.md](./references/troubleshooting.md): common matplotlib / seaborn issues and fixes
 - [examples/comparison_results.csv](./examples/comparison_results.csv): a real sample input table
 - [examples/generate_comparison_bar.py](./examples/generate_comparison_bar.py): a deterministic example plotting script
+- [examples/training_curve_results.csv](./examples/training_curve_results.csv): sample curve data with confidence bands
+- [examples/ablation_results.csv](./examples/ablation_results.csv): sample ablation table
+- [examples/heatmap_results.csv](./examples/heatmap_results.csv): sample hyperparameter grid
 - [scripts/install-skill.sh](./scripts/install-skill.sh): one-command install into `~/.claude/skills`
 
 ## Quick Start
@@ -118,10 +127,25 @@ make test-release
 make example
 ```
 
-This writes:
+This writes the comparison-bar and training-curve examples:
 
 - `examples/output/comparison_bar_example.pdf`
 - `examples/output/comparison_bar_example.png`
+- `examples/output/training_curve_example.pdf`
+- `examples/output/training_curve_example.png`
+
+To generate all committed example families:
+
+```bash
+make example-all
+```
+
+This also produces:
+
+- `examples/output/ablation_bar_example.pdf`
+- `examples/output/ablation_bar_example.png`
+- `examples/output/hyperparam_heatmap_example.pdf`
+- `examples/output/hyperparam_heatmap_example.png`
 
 ## Install Into `~/.claude/skills`
 
@@ -145,9 +169,16 @@ CLAUDE_SKILLS_HOME=/path/to/skills ./scripts/install-skill.sh
 
 ## Example Output
 
-The repository includes a committed example render produced from [examples/comparison_results.csv](./examples/comparison_results.csv):
+The repository includes committed example renders produced from the example CSV files:
 
-![Example figure output](./examples/output/comparison_bar_example.png)
+| Comparison Bar | Training Curve |
+| --- | --- |
+| ![Comparison example output](./examples/output/comparison_bar_example.png) | ![Training curve example output](./examples/output/training_curve_example.png) |
+
+The repository also includes:
+
+- `examples/output/ablation_bar_example.png`
+- `examples/output/hyperparam_heatmap_example.png`
 
 ## Example User Requests
 
@@ -192,7 +223,16 @@ git status
 make test
 make test-release
 make example
+make example-all
 ./scripts/install-skill.sh
 ```
+
+## GitHub Configuration
+
+This repository now includes:
+
+- [release configuration](./.github/release.yml) for tag-based GitHub Releases with generated notes
+- [label configuration](./.github/labels.yml) for repository labels
+- [label sync workflow](./.github/workflows/labels.yml) to apply the configured labels
 
 If you modify chart defaults or export rules, rerun both test targets before pushing.

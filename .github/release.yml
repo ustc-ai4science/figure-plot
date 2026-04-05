@@ -1,0 +1,22 @@
+changelog:
+  categories:
+    - title: Skill Logic
+      labels:
+        - skill
+        - plotting
+    - title: Examples
+      labels:
+        - examples
+    - title: Documentation
+      labels:
+        - documentation
+    - title: CI and Tooling
+      labels:
+        - ci
+        - tooling
+    - title: Maintenance
+      labels:
+        - maintenance
+  exclude:
+    labels:
+      - skip-changelog

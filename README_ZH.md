@@ -55,6 +55,12 @@ figure-plot/
 ├── examples/
 │   ├── comparison_results.csv
 │   ├── generate_comparison_bar.py
+│   ├── training_curve_results.csv
+│   ├── generate_training_curve.py
+│   ├── ablation_results.csv
+│   ├── generate_ablation_bar.py
+│   ├── heatmap_results.csv
+│   ├── generate_hyperparam_heatmap.py
 │   └── output/
 │       ├── comparison_bar_example.png
 │       └── comparison_bar_example.pdf
@@ -82,6 +88,9 @@ figure-plot/
 - [agents/openai.yaml](./agents/openai.yaml)：Skill UI 元数据
 - [examples/comparison_results.csv](./examples/comparison_results.csv)：真实示例输入数据
 - [examples/generate_comparison_bar.py](./examples/generate_comparison_bar.py)：可运行的示例绘图脚本
+- [examples/training_curve_results.csv](./examples/training_curve_results.csv)：带置信区间的训练曲线示例数据
+- [examples/ablation_results.csv](./examples/ablation_results.csv)：消融实验示例数据
+- [examples/heatmap_results.csv](./examples/heatmap_results.csv)：超参数热力图示例数据
 - [scripts/install-skill.sh](./scripts/install-skill.sh)：一键安装到 `~/.claude/skills`
 
 ## 快速开始
@@ -122,10 +131,25 @@ make test-release
 make example
 ```
 
-会生成：
+默认会生成 comparison bar 和 training curve 两类示例：
 
 - `examples/output/comparison_bar_example.pdf`
 - `examples/output/comparison_bar_example.png`
+- `examples/output/training_curve_example.pdf`
+- `examples/output/training_curve_example.png`
+
+如果要一次生成全部示例：
+
+```bash
+make example-all
+```
+
+还会额外生成：
+
+- `examples/output/ablation_bar_example.pdf`
+- `examples/output/ablation_bar_example.png`
+- `examples/output/hyperparam_heatmap_example.pdf`
+- `examples/output/hyperparam_heatmap_example.png`
 
 ## 一键安装到 `~/.claude/skills`
 
@@ -149,9 +173,16 @@ CLAUDE_SKILLS_HOME=/path/to/skills ./scripts/install-skill.sh
 
 ## 示例输出
 
-仓库里已经提交了一份基于 [examples/comparison_results.csv](./examples/comparison_results.csv) 生成的示例图：
+仓库里已经提交了两类可直接预览的示例输出：
 
-![示例图输出](./examples/output/comparison_bar_example.png)
+| Comparison Bar | Training Curve |
+| --- | --- |
+| ![Comparison 示例图输出](./examples/output/comparison_bar_example.png) | ![Training Curve 示例图输出](./examples/output/training_curve_example.png) |
+
+另外也包含：
+
+- `examples/output/ablation_bar_example.png`
+- `examples/output/hyperparam_heatmap_example.png`
 
 ## 典型触发请求
 
@@ -194,7 +225,16 @@ git status
 make test
 make test-release
 make example
+make example-all
 ./scripts/install-skill.sh
 ```
 
 如果修改了图类默认值、导出规则或脚本，至少重新跑两套测试再提交。
+
+## GitHub 配置
+
+仓库里已经补了：
+
+- [release 配置](./.github/release.yml)：按 tag 生成 GitHub Release
+- [labels 配置](./.github/labels.yml)：统一管理项目标签
+- [labels 同步工作流](./.github/workflows/labels.yml)：把配置同步到仓库标签
