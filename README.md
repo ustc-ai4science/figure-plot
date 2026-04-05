@@ -45,14 +45,25 @@ The style contract is academic and conservative by default:
 figure-plot/
 ├── SKILL.md
 ├── README.md
+├── README_ZH.md
+├── LICENSE
 ├── Makefile
 ├── .gitignore
+├── agents/
+│   └── openai.yaml
+├── examples/
+│   ├── comparison_results.csv
+│   ├── generate_comparison_bar.py
+│   └── output/
+│       ├── comparison_bar_example.png
+│       └── comparison_bar_example.pdf
 ├── references/
 │   ├── plot-presets.md
 │   ├── style-guide.md
 │   ├── data-patterns.md
 │   └── troubleshooting.md
 └── scripts/
+    ├── install-skill.sh
     ├── check-deps.sh
     ├── self-test.sh
     └── release-test.sh
@@ -65,6 +76,9 @@ figure-plot/
 - [references/style-guide.md](./references/style-guide.md): academic rc params, muted palette, paper sizing guidance
 - [references/data-patterns.md](./references/data-patterns.md): common pandas reshape / aggregation patterns
 - [references/troubleshooting.md](./references/troubleshooting.md): common matplotlib / seaborn issues and fixes
+- [examples/comparison_results.csv](./examples/comparison_results.csv): a real sample input table
+- [examples/generate_comparison_bar.py](./examples/generate_comparison_bar.py): a deterministic example plotting script
+- [scripts/install-skill.sh](./scripts/install-skill.sh): one-command install into `~/.claude/skills`
 
 ## Quick Start
 
@@ -97,6 +111,43 @@ make test
 ```bash
 make test-release
 ```
+
+### 4. Generate the example figure
+
+```bash
+make example
+```
+
+This writes:
+
+- `examples/output/comparison_bar_example.pdf`
+- `examples/output/comparison_bar_example.png`
+
+## Install Into `~/.claude/skills`
+
+To copy this skill into the default Claude skills directory:
+
+```bash
+./scripts/install-skill.sh
+```
+
+To install into a custom skills root:
+
+```bash
+./scripts/install-skill.sh /path/to/skills
+```
+
+Or:
+
+```bash
+CLAUDE_SKILLS_HOME=/path/to/skills ./scripts/install-skill.sh
+```
+
+## Example Output
+
+The repository includes a committed example render produced from [examples/comparison_results.csv](./examples/comparison_results.csv):
+
+![Example figure output](./examples/output/comparison_bar_example.png)
 
 ## Example User Requests
 
@@ -140,6 +191,8 @@ Useful commands:
 git status
 make test
 make test-release
+make example
+./scripts/install-skill.sh
 ```
 
 If you modify chart defaults or export rules, rerun both test targets before pushing.

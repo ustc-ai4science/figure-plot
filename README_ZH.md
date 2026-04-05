@@ -52,12 +52,19 @@ figure-plot/
 ├── .gitignore
 ├── agents/
 │   └── openai.yaml
+├── examples/
+│   ├── comparison_results.csv
+│   ├── generate_comparison_bar.py
+│   └── output/
+│       ├── comparison_bar_example.png
+│       └── comparison_bar_example.pdf
 ├── references/
 │   ├── plot-presets.md
 │   ├── style-guide.md
 │   ├── data-patterns.md
 │   └── troubleshooting.md
 ├── scripts/
+│   ├── install-skill.sh
 │   ├── check-deps.sh
 │   ├── self-test.sh
 │   └── release-test.sh
@@ -73,6 +80,9 @@ figure-plot/
 - [references/data-patterns.md](./references/data-patterns.md)：常见 pandas reshape / 聚合模式
 - [references/troubleshooting.md](./references/troubleshooting.md)：常见 matplotlib / seaborn 问题和修复方法
 - [agents/openai.yaml](./agents/openai.yaml)：Skill UI 元数据
+- [examples/comparison_results.csv](./examples/comparison_results.csv)：真实示例输入数据
+- [examples/generate_comparison_bar.py](./examples/generate_comparison_bar.py)：可运行的示例绘图脚本
+- [scripts/install-skill.sh](./scripts/install-skill.sh)：一键安装到 `~/.claude/skills`
 
 ## 快速开始
 
@@ -105,6 +115,43 @@ make test
 ```bash
 make test-release
 ```
+
+### 4. 生成示例图
+
+```bash
+make example
+```
+
+会生成：
+
+- `examples/output/comparison_bar_example.pdf`
+- `examples/output/comparison_bar_example.png`
+
+## 一键安装到 `~/.claude/skills`
+
+默认安装到 Claude 的技能目录：
+
+```bash
+./scripts/install-skill.sh
+```
+
+安装到指定路径：
+
+```bash
+./scripts/install-skill.sh /path/to/skills
+```
+
+或者：
+
+```bash
+CLAUDE_SKILLS_HOME=/path/to/skills ./scripts/install-skill.sh
+```
+
+## 示例输出
+
+仓库里已经提交了一份基于 [examples/comparison_results.csv](./examples/comparison_results.csv) 生成的示例图：
+
+![示例图输出](./examples/output/comparison_bar_example.png)
 
 ## 典型触发请求
 
@@ -146,6 +193,8 @@ make test-release
 git status
 make test
 make test-release
+make example
+./scripts/install-skill.sh
 ```
 
 如果修改了图类默认值、导出规则或脚本，至少重新跑两套测试再提交。
