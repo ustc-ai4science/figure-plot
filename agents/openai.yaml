@@ -1,0 +1,4 @@
+interface:
+  display_name: "Figure Plot"
+  short_description: "Generate publication-quality AI/ML paper figures from results tables or files."
+  default_prompt: "Use $figure-plot to inspect the experiment data, choose the right chart family, generate a publication-quality static figure, and export both PDF and PNG."

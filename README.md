@@ -1,5 +1,7 @@
 # figure-plot
 
+[English](./README.md) | [中文](./README_ZH.md)
+
 `figure-plot` is a lightweight plotting skill for turning AI/ML experiment results into publication-quality static figures.
 
 It is designed for agent workflows where the user provides:
